@@ -1,16 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, ApplicationRef,ModuleWithProviders } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { AgmCoreModule } from '@agm/core';
+
+
+import {routing} from './app.routing';
+
+
+import { ImagesService } from './services/images.service'
+import { NumerosService } from './services/numeros.service'
 
 import { AppComponent } from './app.component';
+import {HomeComponent} from './home/home.component';
+import {AboutComponent} from './about/about.component';
+import { InstruccionesComponent } from './instrucciones/instrucciones.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    CommonModule,
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCjb4lMbRfxfhahE3IzkFQrLSdGTdOM6B4'
+    }),
+    routing
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [ AppComponent, HomeComponent, AboutComponent, InstruccionesComponent],
+  providers: [ImagesService,NumerosService],
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {}
+
+

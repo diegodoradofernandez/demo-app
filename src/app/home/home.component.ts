@@ -27,8 +27,8 @@ export class HomeComponent implements OnInit {
   subTitle : string ='Productos más vendidos en todas las tiendas.';
 
   // parametros google maps
-  zoom: number = 7;
-  lat: number = 43.4874961;
+  zoom: number = 8;
+  lat: number = 43.0274961;
   lng: number = -8.2103802;
 
   //parametros de búsqueda

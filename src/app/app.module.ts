@@ -24,7 +24,11 @@ import { InstruccionesComponent } from './instrucciones/instrucciones.component'
     CommonModule,
     FormsModule,
     AgmCoreModule.forRoot({
+<<<<<<< HEAD
+      apiKey: 'AIzaSyCjb4lMbRfxfhahE3IzkFQrLSdGTdOM6B4' // api key de google maps
+=======
       apiKey: 'AIzaSyCjb4lMbRfxfhahE3IzkFQrLSdGTdOM6B4'
+>>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
     }),
     routing
   ],

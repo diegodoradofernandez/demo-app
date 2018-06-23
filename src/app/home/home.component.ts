@@ -45,8 +45,12 @@ export class HomeComponent implements OnInit {
 
   //numeros
   ventas=[];
+  prendas = [];
   ventasTotales = 0;
-  ventasTienda = 0
+  prendasTotales =0;
+
+  ventasTienda = 0;
+  prendasTienda = 0;
   fechaActualizacion : any;
 
   nombreTienda: string = '';
@@ -82,11 +86,16 @@ export class HomeComponent implements OnInit {
 
 }  
 
-
+ /**
+   * Obtiene los datos de ventas de la tienda.
+   * @param search
+   * @returns index
+   */
   clickedMarker(search: string, index: number) {
     
     //limpiamos las imagenes
     this.images = [];
+
     //Obtenemos imagenes aleatorias en funcion del parametro de búsqueda
     this.queryChanged.next(search);
 
@@ -98,14 +107,6 @@ export class HomeComponent implements OnInit {
 
   }
   
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng
-    });
-  }
-  
-
 
   //Marcas de posición de las tiendas
   markers: marker[] = [
@@ -154,7 +155,7 @@ export class HomeComponent implements OnInit {
   ];
 
   numeros() {
-    this.numeroService.random()
+    this.numeroService.random16()
       .subscribe(datos => {
 
         this.ventas = [];
@@ -165,7 +166,6 @@ export class HomeComponent implements OnInit {
         }     
         
         if (this.tiendaSeleccionada !== -1){
-          console.log(this.ventas[this.tiendaSeleccionada]);
           this.ventasTienda = this.ventas[this.tiendaSeleccionada];
         }
 
@@ -176,6 +176,28 @@ export class HomeComponent implements OnInit {
       }, error => {
         this.errorMessage = error;
       });
+
+
+      this.numeroService.random8()
+      .subscribe(datos => {
+
+        this.prendas = [];
+
+        for (let i = 0; i < datos["data"].length; i++) {
+          this.prendas.push(datos["data"][i]);
+          this.prendasTotales +=datos["data"][i];
+        }     
+        
+        if (this.tiendaSeleccionada !== -1){
+          this.prendasTienda = this.ventas[this.tiendaSeleccionada];
+        }
+  
+        this.errorMessage = '';
+      }, error => {
+        this.errorMessage = error;
+      });
+
+
   }
 
 

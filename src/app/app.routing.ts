@@ -13,16 +13,5 @@ export const routes: Routes = [
   {path: '**', component: HomeComponent}
 ];
 
-//
-// @NgModule({
-//   imports: [
-//     RouterModule.forRoot(appRoutes)
-//   ],
-//   exports: [
-//     RouterModule
-//   ]
-// })
-//
-// export class AppRoutingModule {
-// }
+
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes);

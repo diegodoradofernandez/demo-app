@@ -6,11 +6,8 @@ import {NavigationEnd, Router} from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'TopVentas';
-
-  ngOnInit() {
-  }
 
   constructor(private router: Router) {
     this.router.events
@@ -18,7 +15,11 @@ export class AppComponent implements OnInit {
       });
   }
 
-  go(path) {
+   /**
+   * Click en menú de navegación.
+   * @param path
+    */
+  go(path : string) {
       this.router.navigateByUrl(path);
       return( false );
   }

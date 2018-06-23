@@ -12,8 +12,11 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class NumerosService {
 
-  private url = 'https://qrng.anu.edu.au/API/jsonI.php?length=7&type=uint16';  // URL to web API
+  private url = 'https://qrng.anu.edu.au/API/jsonI.php?length=7&type=';  // URL
 
+  private _uint16 = "uint16";
+
+  private _uint8 = "uint8";
 
   constructor(private http: Http) {
   }
@@ -23,8 +26,14 @@ export class NumerosService {
    * Obtenemos un array de numeros aleatorios.
    * @returns {Observable<R|T>}
    */
-  random(): Observable<any[]> {
-    return this.http.get(this.url)
+  random16(): Observable<any[]> {
+    return this.http.get(this.url + this._uint16)
+      .map(response => response.json())
+      .catch(this.handleError);
+  }
+
+  random8(): Observable<any[]> {
+    return this.http.get(this.url + this._uint8)
       .map(response => response.json())
       .catch(this.handleError);
   }

@@ -10,7 +10,7 @@ import {environment} from '../../environments/environment';
 @Injectable()
 export class ImagesService {
 
-  private url = 'https://api.unsplash.com';  // URL to web API
+  private url = 'https://api.unsplash.com';  // URL web API
   private applicationId = environment.applicationId;
   searchEvent: EventEmitter<any> = new EventEmitter();
   page = 1;
@@ -22,37 +22,25 @@ export class ImagesService {
 
 
   /**
-   * Get random array of images.
-   * @returns {Observable<R|T>}
-   */
-  random(page: number): Observable<any[]> {
-    return this.http.get(this.url + '/photos?client_id=' + this.applicationId + '&page=' + page + '&per_page=' + this.per_page)
-      .map(response => response.json())
-      .catch(this.handleError);
-  }
-
-
-  /**
-   * Handle generic error and for Rate Limit Exceeded error, share a user friendly message.
+   * Mensaje de error.
    * @param res
    * @returns {any|Array}
    */
   handleError(error: Response | any) {
     let errorMessage: string;
     if (error.status === 403 && error._body === 'Rate Limit Exceeded') {
-      errorMessage = 'Oops! We have exceed our hourly free limit. Please try later.';
+      errorMessage = 'Se ha superado el límite diario. Por favor, inténtalo más tarde';
     } else {
-      errorMessage = 'Oops! Something went wrong. Please try again.';
+      errorMessage = 'Ha ocurrido un error, inténtalo más tarde.';
     }
     return Observable.throw(errorMessage);
   }
 
 
   /**
-   * Search for image based on user's query, trigger an event to update view.
-   * Here search query is coming from SearchComponent.
-   * Search result matching query will be sent to HomeComponent.
+   * Busqueda de imágenes
    * @param query
+   * @param page
    */
   search(query: string, page: number) {
     if (query.length === 0) {
@@ -73,23 +61,11 @@ export class ImagesService {
 
 
   /**
-   * Return a listener to Search Event.
+   * Listener de busqueda
    * @returns {EventEmitter<any>}
    */
   getSearchEvent() {
     return this.searchEvent;
-  }
-
-
-  /**
-   * Get Image by id
-   * @param id
-   * @returns {Observable<R|T>}
-   */
-  get(id: string): Observable<any[]> {
-    return this.http.get(this.url + '/photos/' + id + '/?client_id=' + this.applicationId)
-      .map(response => response.json())
-      .catch(this.handleError);
   }
 
 }

@@ -1,8 +1,8 @@
 <div class="row mt-10">
-    <div class="col-9">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false" (mapClick)="mapClicked($event)">
+    <div class="col-6">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
 
-            <agm-marker *ngFor="let m of markers; let i = index" (markerClick)="clickedMarker(m.search,i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
+            <agm-marker *ngFor=" let m of markers; let i = index " (markerClick)="clickedMarker(m.search,i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
 
                 <agm-info-window>
                     <p><strong>{{m.label}}</strong></p>
@@ -16,31 +16,48 @@
 
     </div>
 
-    <div class="col-3">
-        <div class="skill5">
-            <h3 class="font-weight-light text-muted">Ventas totales</h3>
-            <p class="small font-weight-light text-muted">actualización cada 10 segundos</p>
-            <div class="col-12">
-                <div class="skill5-counter">
-                    <p class="counter-count">{{ventasTotales}}</p>
-                    <p class="font-weight-light text-muted" [hidden]="fechaActualizacion">Esperando datos</p>
-                    <p class="font-weight-light text-muted" [hidden]="!fechaActualizacion">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+    <div class="col-3 ">
+        <div class="skill5 ">
+            <h3 class="font-weight-light text-muted ">Ventas totales</h3>
+            <p class="small font-weight-light text-muted ">actualización cada 10 segundos</p>
+            <div class="col-12 ">
+                <div class="skill5-counter ">
+                    <p class="counter-count ">{{ventasTotales}}</p>
+                    <p class="font-weight-light text-muted " [hidden]="fechaActualizacion ">Esperando datos</p>
+                    <p class="font-weight-light text-muted " [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
                 </div>
             </div>
         </div>
     </div>
 
+
+    <div class="col-3 ">
+        <div class="skill5 ">
+            <h3 class="font-weight-light text-muted ">Prendas totales</h3>
+            <p class="small font-weight-light text-muted ">actualización cada 10 segundos</p>
+            <div class="col-12 ">
+                <div class="skill5-counter ">
+                    <p class="counter-count ">{{prendasTotales}}</p>
+                    <p class="font-weight-light text-muted " [hidden]="fechaActualizacion ">Esperando datos</p>
+                    <p class="font-weight-light text-muted " [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 </div>
 
 
 
-<div class="container-fluid">
+<div class="container-fluid ">
 
-    <div class="d-flex flex-row">
+    <div class="d-flex flex-row ">
 
-        <div class="col-4 d-flex justify-content-center align-items-center">
+        <div class="col-4 d-flex justify-content-center align-items-center ">
 
-            <h5 class="font-weight-light text-muted" [hidden]="tiendaSeleccionada > -1">{{subTitle}}</h5>
+            <h5 class="font-weight-light text-muted " [hidden]="tiendaSeleccionada> -1">{{subTitle}}</h5>
 
 
             <div class="skill5" [hidden]="tiendaSeleccionada === -1">

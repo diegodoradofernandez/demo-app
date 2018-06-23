@@ -1,3 +1,4 @@
+
 import { Component,OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { MouseEvent } from '@agm/core';
@@ -45,17 +46,12 @@ export class HomeComponent implements OnInit {
 
   //numeros
   ventas=[];
-<<<<<<< HEAD
   prendas = [];
   ventasTotales = 0;
   prendasTotales =0;
 
   ventasTienda = 0;
   prendasTienda = 0;
-=======
-  ventasTotales = 0;
-  ventasTienda = 0
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
   fechaActualizacion : any;
 
   nombreTienda: string = '';
@@ -91,23 +87,16 @@ export class HomeComponent implements OnInit {
 
 }  
 
-<<<<<<< HEAD
  /**
    * Obtiene los datos de ventas de la tienda.
    * @param search
    * @returns index
    */
-=======
-
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
   clickedMarker(search: string, index: number) {
     
     //limpiamos las imagenes
     this.images = [];
-<<<<<<< HEAD
-
-=======
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
+    
     //Obtenemos imagenes aleatorias en funcion del parametro de búsqueda
     this.queryChanged.next(search);
 
@@ -119,17 +108,6 @@ export class HomeComponent implements OnInit {
 
   }
   
-<<<<<<< HEAD
-=======
-  mapClicked($event: MouseEvent) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng
-    });
-  }
-  
-
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
 
   //Marcas de posición de las tiendas
   markers: marker[] = [
@@ -178,11 +156,7 @@ export class HomeComponent implements OnInit {
   ];
 
   numeros() {
-<<<<<<< HEAD
     this.numeroService.random16()
-=======
-    this.numeroService.random()
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
       .subscribe(datos => {
 
         this.ventas = [];
@@ -193,10 +167,6 @@ export class HomeComponent implements OnInit {
         }     
         
         if (this.tiendaSeleccionada !== -1){
-<<<<<<< HEAD
-=======
-          console.log(this.ventas[this.tiendaSeleccionada]);
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
           this.ventasTienda = this.ventas[this.tiendaSeleccionada];
         }
 
@@ -207,7 +177,6 @@ export class HomeComponent implements OnInit {
       }, error => {
         this.errorMessage = error;
       });
-<<<<<<< HEAD
 
 
       this.numeroService.random8()
@@ -230,8 +199,6 @@ export class HomeComponent implements OnInit {
       });
 
 
-=======
->>>>>>> e2cca6f72741cc61600428950af2ff55af5ddba8
   }
 
 
@@ -286,5 +253,4 @@ export class HomeComponent implements OnInit {
   label?: string;
   search?: string;
 }
-
 

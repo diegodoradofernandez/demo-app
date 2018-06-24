@@ -20,7 +20,7 @@ export class AppComponent {
    * Click en menú de navegación.
    * @param path
     */
-  go(path : string) {
+  go(path: string) {
       this.router.navigateByUrl(path);
       return( false );
   }

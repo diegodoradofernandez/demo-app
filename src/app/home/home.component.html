@@ -1,8 +1,8 @@
 <div class="row mt-10">
-    <div class="col-6">
-        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="false" [zoomControl]="false">
+    <div class="col-12 col-md-6">
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="zoom" [disableDefaultUI]="true" [zoomControl]="false">
 
-            <agm-marker *ngFor=" let m of markers; let i = index " (markerClick)="clickedMarker(m.search,i)" [latitude]="m.lat" [longitude]="m.lng" [label]="m.label">
+            <agm-marker *ngFor=" let m of markers; let i = index " (markerClick)="clickedMarker(m.search,i)" [latitude]="m.lat" [longitude]="m.lng">
 
                 <agm-info-window>
                     <p><strong>{{m.label}}</strong></p>
@@ -16,66 +16,106 @@
 
     </div>
 
-    <div class="col-3 ">
-        <div class="skill5 ">
-            <h3 class="font-weight-light text-muted ">Ventas totales</h3>
+    <div class="col-6 col-md-3 justify-content-center align-items-center">
+
+        <div class="skill5">
+            <h4 class="font-weight-light text-muted ">Ventas totales
+                <button type="button" class="btn btn-link" (click)="detalle('ventas')">
+                    <small>detalle ...</small>
+                </button>
+            </h4>
             <p class="small font-weight-light text-muted ">actualización cada 10 segundos</p>
             <div class="col-12 ">
-                <div class="skill5-counter ">
+                <div class="skill5-counter" [hidden]="hayDetalleVentas">
                     <p class="counter-count ">{{ventasTotales}}</p>
-                    <p class="font-weight-light text-muted " [hidden]="fechaActualizacion ">Esperando datos</p>
-                    <p class="font-weight-light text-muted " [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+                    <p class="font-weight-light text-muted justify-content-center align-items-center" [hidden]="fechaActualizacion">Esperando datos</p>
+
                 </div>
+                <div class="row" [hidden]="!hayDetalleVentas">
+                    <div class="col-6 skill2" *ngFor="let venta of detalleVentas;let i = index">
+                        <div class="skill2-counter">
+                            <p class="counter-count ">{{prendas[i]}}</p>
+                        </div>
+                        <p class="small">{{venta}}</p>
+                    </div>
+
+
+                </div>
+
+                <p class="font-weight-light text-muted justify-content-center align-items-center" [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
             </div>
+
+
         </div>
+
+
+
     </div>
 
 
-    <div class="col-3 ">
-        <div class="skill5 ">
-            <h3 class="font-weight-light text-muted ">Prendas totales</h3>
+    <div class="col-6 col-sm-3 justify-content-center align-items-center">
+        <div class="skill5">
+            <h4 class="font-weight-light text-muted ">Prendas totales
+                <button type="button" class="btn btn-link" (click)="detalle('prendas')">
+                    <small>detalle ...</small>
+                </button>
+            </h4>
             <p class="small font-weight-light text-muted ">actualización cada 10 segundos</p>
             <div class="col-12 ">
-                <div class="skill5-counter ">
+                <div class="skill5-counter" [hidden]="hayDetallePrendas">
                     <p class="counter-count ">{{prendasTotales}}</p>
-                    <p class="font-weight-light text-muted " [hidden]="fechaActualizacion ">Esperando datos</p>
-                    <p class="font-weight-light text-muted " [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+                    <p class="font-weight-light text-muted justify-content-center align-items-center" [hidden]="fechaActualizacion ">Esperando datos</p>
+
                 </div>
+
+                <div class="row align-items-left" [hidden]="!hayDetallePrendas">
+                    <ul class="lst-none" *ngFor="let prenda of detallePrendas; let i = index">
+                        <li><span class="small font-weight-light">{{prenda}}. {{prendas[i]}} unidades.</span></li>
+                    </ul>
+                </div>
+
+                <p class="font-weight-light text-muted justify-content-center align-items-center" [hidden]="!fechaActualizacion ">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+
             </div>
         </div>
     </div>
-
-
-
 </div>
 
 
 
 <div class="container-fluid ">
 
-    <div class="d-flex flex-row ">
+    <div class="row">
 
-        <div class="col-4 d-flex justify-content-center align-items-center ">
+        <div class="col-12 col-lg-4 d-flex justify-content-center align-items-center ">
 
             <h5 class="font-weight-light text-muted " [hidden]="tiendaSeleccionada> -1">{{subTitle}}</h5>
 
-
             <div class="skill5" [hidden]="tiendaSeleccionada === -1">
-                <h3 class="font-weight-light text-muted">Ventas {{nombreTienda}}</h3>
+                <h3 class="font-weight-light text-muted">Ventas {{nombreTienda}}
+                    <button type="button" class="btn btn-link" (click)="detalle('ciudad')">
+                        <small>detalle ...</small>
+                    </button>
+                </h3>
                 <p class="small font-weight-light text-muted">actualización cada 10 segundos</p>
                 <div class="col-12">
-                    <div class="skill5-counter">
+                    <div class="skill5-counter" [hidden]="hayDetalleCiudad">
                         <p class="counter-count">{{ventasTienda}}</p>
                         <p class="font-weight-light text-muted" [hidden]="fechaActualizacion">Esperando datos</p>
-                        <p class="font-weight-light text-muted" [hidden]="!fechaActualizacion">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
+
                     </div>
+
+                    <div class="row align-items-left" [hidden]="!hayDetalleCiudad">
+                        <ul class="lst-none" *ngFor="let prenda of detalleCiudad; let i = index">
+                            <li><span class="small font-weight-light">{{prenda}}. {{prendas[i]}} unidades.</span></li>
+                        </ul>
+                    </div>
+
+                    <p class="font-weight-light text-muted" [hidden]="!fechaActualizacion">Actualizado a las {{fechaActualizacion | date:'hh:mm:ss'}}</p>
                 </div>
             </div>
         </div>
-
-
-
-        <div class="col-8">
+        <div class="col-12 col-lg-8">
 
             <div class="image-container">
 

@@ -53,12 +53,6 @@ agm-map {
     margin: 5px;
 }
 
-p {
-    padding: 8px 16px;
-    background: white;
-    margin: 8px;
-}
-
 a {
     color: black;
 }
@@ -90,6 +84,37 @@ a {
     display: inline-block;
 }
 
+.skill2 {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.skill2 .counter-count {
+    -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 1);
+    font-size: 15px;
+    background-color: #000000;
+    border-radius: 50%;
+    position: relative;
+    color: #ffffff;
+    text-align: center;
+    line-height: 62px;
+    width: 62px;
+    height: 62px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    display: inline-block;
+}
+
+.lst-none {
+    list-style-type: none;
+}
+
 @media (max-width: 1200px) {
     .page {
         -moz-column-count: 3;
@@ -119,6 +144,12 @@ a {
         -moz-column-count: 1;
         -webkit-column-count: 1;
         column-count: 1;
+    }
+    .skill5 .counter-count {
+        font-size: 20px;
+        line-height: 102px;
+        width: 122px;
+        height: 122px;
     }
 }
 

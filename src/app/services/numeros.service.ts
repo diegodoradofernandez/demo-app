@@ -12,9 +12,9 @@ export class NumerosService {
 
   private url = 'https://qrng.anu.edu.au/API/jsonI.php?length=7&type=';  // URL
 
-  private _uint16 = "uint16";
+  private _uint16 = 'uint16';
 
-  private _uint8 = "uint8";
+  private _uint8 = 'uint8';
 
   constructor(private http: Http) {
   }
@@ -52,6 +52,4 @@ export class NumerosService {
     return Observable.throw(errorMessage);
   }
 
-
-  
 }

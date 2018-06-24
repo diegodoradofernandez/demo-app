@@ -1,5 +1,5 @@
 
-import { Component, OnInit, isDefaultChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { MouseEvent } from '@agm/core';
 

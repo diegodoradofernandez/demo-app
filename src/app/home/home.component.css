@@ -147,9 +147,15 @@ a {
     }
     .skill5 .counter-count {
         font-size: 20px;
-        line-height: 102px;
+        line-height: 122px;
         width: 122px;
         height: 122px;
+    }
+    .skill2 .counter-count {
+        font-size: 15px;
+        line-height: 42px;
+        width: 42px;
+        height: 42px;
     }
 }
 

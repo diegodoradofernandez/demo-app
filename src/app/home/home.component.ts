@@ -259,6 +259,7 @@ export class HomeComponent implements OnInit {
     console.log(dato);
 
     switch (dato) {
+      
       case 'ventas':
         this.hayDetalleVentas === true  ? this.hayDetalleVentas = false : this.hayDetalleVentas = true;
         this.detalleVentas = this.randomOrder(environment.categorias).slice(0, 4);
